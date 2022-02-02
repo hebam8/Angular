@@ -13,8 +13,8 @@ export interface ICategory {
 
 export enum DiscountOffers {
   Discount = 'No Discount',
-  salle1 = '10%',
-  sale2 = '15%',
+  salle1 = 100,
+  sale2 = 0.7,
 }
 var DiscountOffers1 = DiscountOffers.Discount;
 var obj: ICategory = { ID: 2, Name: 'Heba' };
