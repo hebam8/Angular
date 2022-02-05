@@ -1,44 +1,43 @@
-<h1>{{ Storename }}</h1>
+<!-- <h1>{{ Storename }}</h1> -->
 
 <!-- <img [src]="StoreLogo" alt="" class="img-fluid" /> -->
 
 <!-- (1)	If the value of discount is: “No discount”, hide this <h3> tag (Use structural 
     directive *ngIf). -->
-
+<!-- 
 <h3 *ngIf="Discount != 'No Discount'; then go"></h3>
 <ng-template #go>
   <h3>"We offer an explicit discount of:" {{ Discount }}</h3>
-</ng-template>
+</ng-template> -->
 
 <!-- 2------------------------------------- -->
 <!-- Make a Dropdownlist that displays the categories (Use structural directive 
                          *ngFor -->
-
+<!-- 
 <select name="" id="" aria-placeholder="categories">
   <option [value]="categroy.Name" *ngFor="let categroy of CategoryList">
     {{ categroy.Name }}
   </option>
 </select>
 <br />
-<br />
+<br /> -->
 <!--4 -------------------------------------------------- -->
 <!-- Make an input where user enters his Name, and use two-way binding (Banana
                         operator) to bind it to “ClientName” property in the class. -->
 
-<input type="text" [(ngModel)]="ClientName" />
+<!-- <input type="text" [(ngModel)]="ClientName" />
 {{ ClientName }}
 <br />
-<br />
+<br /> -->
 <!-- a.	For the store name display it as upper case using pipes -->
-{{ Storename | uppercase }}
+<!-- {{ Storename | uppercase }}
 <br />
 <br />
 {{ Discount | percent }}
-<br />
+<br /> -->
 <!-- 3+ 5 Make a table the display the Products list (Use structural directive *ngFor). -->
-<!-- <input type="button" value="Buy" (click)="show()" /> -->
+<input type="button" value="Buy" (click)="show()" />
 <h2 *ngIf="IsPurshasedd; then thenblock; else elseblock"></h2>
-
 <ng-template #thenblock>
   <h2>
     {{ message }}
@@ -61,6 +60,8 @@
           <td>{{ item.ID }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.price }}</td>
+          <td>{{ item.Quantity }}</td>
+          <td><img src="../../assets/img2.jpg" alt="" /></td>
         </tr>
       </tbody>
     </table>

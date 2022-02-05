@@ -1,19 +1,40 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, Observable, throwError } from 'rxjs';
+import { IPost } from 'src/assets/Data/IPost';
+import { IUser } from 'src/assets/Data/IUser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductServiceService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   productss = [
-    { ID: 1, name: 'product1', price: 50 },
-    { ID: 2, name: 'product2', price: 60 },
-    { ID: 3, name: 'product1', price: 80 },
-    { ID: 4, name: 'product1', price: 90 },
+    { ID: 1, name: 'product1', Quantity: 40, price: 50 },
+    { ID: 2, name: 'product2', Quantity: 70, price: 60 },
+    { ID: 3, name: 'product1', Quantity: 80, price: 80 },
+    { ID: 4, name: 'product1', Quantity: 90, price: 90 },
   ];
   GetAllProducts() {
     return this.productss;
+  }
+  __url: string = 'https://jsonplaceholder.typicode.com/users';
+  GetALLUesrData(): Observable<IUser[]> {
+    return this.http.get<IUser[]>(this.__url).pipe(
+      catchError((err) => {
+        return throwError(err.message || 'Server error');
+      })
+    );
+  }
+  url2: string = 'https://jsonplaceholder.typicode.com/posts';
+
+  GetALLPostes(): Observable<IPost[]> {
+    return this.http.get<IPost[]>(this.url2).pipe(
+      catchError((error) => {
+        return throwError(error.message || 'error');
+      })
+    );
   }
 
   GetProductById(prdId: any): any {

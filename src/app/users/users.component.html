@@ -1,0 +1,20 @@
+<table class="table" *ngFor="let user of userDataList">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>User name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+    </tr>
+  </tbody>
+</table>
+
+{{ errorMsg }}
