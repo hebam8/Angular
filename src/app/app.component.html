@@ -15,6 +15,56 @@
     <li class="list-group-item">Fourth item</li>
   </ul>
 </div>
-<app-products></app-products>
 
+<input type="button" value="Display Data" (click)="display()" />
+<!-- 
+<h2 *ngIf="IsPurshasedd; then thenblock; else elseblock"></h2>
+
+<ng-template #thenblock>
+  <h2>
+    {{ message }}
+  </h2>
+</ng-template>
+
+<ng-template #elseblock>
+  <div class="container">
+    <h2>Product Table</h2>
+    <table class="table" *ngFor="let item of ProductList">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>img</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ item.ID }}</td>
+          <td>{{ item.Name }}</td>
+          <td>{{ item.Quantity }}</td>
+          <td>{{ item.Price }}</td>
+          <td><img src="../../assets/img2.jpg" alt="" /></td>
+        </tr>
+        <tr>
+          <td>{{ item.ID }}</td>
+          <td>{{ item.Name }}</td>
+          <td>{{ item.Quantity }}</td>
+          <td>{{ item.Price }}</td>
+          <td><img src="../../assets/img2.jpg" alt="" /></td>
+        </tr>
+        <tr>
+          <td>{{ item.ID }}</td>
+          <td>{{ item.Name }}</td>
+          <td>{{ item.Quantity }}</td>
+          <td>{{ item.Price }}</td>
+          <td><img src="../../assets/img2.jpg" alt="" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template> -->
+
+<app-products></app-products>
 <app-footer></app-footer>

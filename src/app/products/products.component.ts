@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductServiceService } from '../services/product-service.service';
 import {
   DiscountOffers,
   ICategory,
@@ -14,31 +15,27 @@ export class ProductsComponent implements OnInit {
   Discount: DiscountOffers;
   Storename: string;
   StoreLogo: string;
-  ProductList: IProduct[];
+  ProductList: any;
   CategoryList: ICategory[];
   ClientName: string;
   IsPurshased: boolean;
   showTable: boolean = false;
 
-  constructor() {
+  constructor(private productserviceservice: ProductServiceService) {
     (this.Discount = DiscountOffers.sale2),
       (this.CategoryList = [
         { ID: 2, Name: 'category1' },
         { ID: 2, Name: 'category2' },
       ]),
-      (this.ProductList = [
-        {
-          ID: 3,
-          Name: 'mansour',
-          Quantity: 33,
-          Price: 188,
-          img: 'oregj',
-        },
-      ]);
+      (this.ProductList = this.renderValues());
     (this.Storename = 'Hamada'),
       (this.StoreLogo = '../../assets/img2.jpg'),
       (this.ClientName = 'Heba'),
       (this.IsPurshased = true);
+  }
+
+  renderValues() {
+    return (this.ProductList = this.productserviceservice.GetAllProducts());
   }
 
   message = '';
