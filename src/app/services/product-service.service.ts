@@ -15,7 +15,14 @@ export class ProductServiceService {
   GetAllProducts() {
     return this.productss;
   }
-  //   GetProductById(prdId: any) {
 
-  // }
+  GetProductById(prdId: any): any {
+    if (typeof prdId != 'number') return null;
+    else {
+      for (let i of this.productss) {
+        if (i.ID === prdId) return i;
+        else return null;
+      }
+    }
+  }
 }
