@@ -36,6 +36,12 @@
 {{ Discount | percent }}
 <br /> -->
 <!-- 3+ 5 Make a table the display the Products list (Use structural directive *ngFor). -->
+<button (click)="goToDiscount()">Discount</button>
+<button (click)="goToNoDiscount()">No Discount</button>
+<router-outlet></router-outlet>
+
+<br />
+<br />
 <input type="button" value="Buy" (click)="show()" />
 <h2 *ngIf="IsPurshasedd; then thenblock; else elseblock"></h2>
 <ng-template #thenblock>
@@ -70,3 +76,5 @@
 
 <!-- ---------------------------------- -->
 <!-- <input type="button" value=" Data" (click)="renderValues()" /> -->
+
+<!-- <input type="button" value="" (click)="go()"> -->

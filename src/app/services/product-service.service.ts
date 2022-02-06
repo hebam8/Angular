@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { IComment } from 'src/assets/Data/IComment';
 import { IPost } from 'src/assets/Data/IPost';
 import { IUser } from 'src/assets/Data/IUser';
 
@@ -31,6 +32,14 @@ export class ProductServiceService {
 
   GetALLPostes(): Observable<IPost[]> {
     return this.http.get<IPost[]>(this.url2).pipe(
+      catchError((error) => {
+        return throwError(error.message || 'error');
+      })
+    );
+  }
+  __ul3: string = 'https://jsonplaceholder.typicode.com/comments';
+  GetAllComment(): Observable<IComment[]> {
+    return this.http.get<IComment[]>(this.__ul3).pipe(
       catchError((error) => {
         return throwError(error.message || 'error');
       })

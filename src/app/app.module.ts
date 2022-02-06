@@ -12,6 +12,11 @@ import { PostsComponent } from './posts/posts.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DiscountComponent } from './discount/discount.component';
+import { NoDiscountComponent } from './no-discount/no-discount.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,11 @@ import { HttpClientModule } from '@angular/common/http';
     PostsComponent,
     PageNotFoundComponent,
     HomeComponent,
+    DiscountComponent,
+    NoDiscountComponent,
+    LoginComponent,
+    RegisterComponent,
+    CommentsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

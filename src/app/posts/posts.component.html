@@ -11,6 +11,16 @@
       <td>{{ post.id }}</td>
       <td>{{ post.title }}</td>
       <td>{{ post.body }}</td>
+      <br />
+      <td>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="goToComment(post)"
+        >
+          comment
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

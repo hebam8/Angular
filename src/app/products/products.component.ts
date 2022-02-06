@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from '../services/product-service.service';
 import {
   DiscountOffers,
@@ -21,7 +22,11 @@ export class ProductsComponent implements OnInit {
   IsPurshased: boolean;
   showTable: boolean = false;
 
-  constructor(private productserviceservice: ProductServiceService) {
+  constructor(
+    private productserviceservice: ProductServiceService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
     (this.Discount = DiscountOffers.sale2),
       (this.CategoryList = [
         { ID: 2, Name: 'category1' },
@@ -48,4 +53,12 @@ export class ProductsComponent implements OnInit {
   dataUserEntered = 'defult data';
   img: string = '';
   ngOnInit(): void {}
+
+  goToDiscount() {
+    this.router.navigate(['discount'], { relativeTo: this.activatedRoute });
+  }
+
+  goToNoDiscount() {
+    this.router.navigate(['nodiscount'], { relativeTo: this.activatedRoute });
+  }
 }

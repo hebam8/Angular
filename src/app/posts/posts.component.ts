@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductServiceService } from '../services/product-service.service';
 
 @Component({
@@ -7,7 +8,10 @@ import { ProductServiceService } from '../services/product-service.service';
   styleUrls: ['./posts.component.scss'],
 })
 export class PostsComponent implements OnInit {
-  constructor(private productserviceservice: ProductServiceService) {}
+  constructor(
+    private productserviceservice: ProductServiceService,
+    private router: Router
+  ) {}
   postsData: any;
   errorMSG: any;
   ngOnInit(): void {
@@ -19,5 +23,9 @@ export class PostsComponent implements OnInit {
         this.errorMSG = error;
       }
     );
+  }
+
+  goToComment(post: any) {
+    this.router.navigate(['/comments', post.id]);
   }
 }
