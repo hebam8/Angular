@@ -1,24 +1,121 @@
 <div class="“container-fluid”">
-  <form>
+  <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+    {{ userForm.value | json }}
+    <br />
+    {{ registerModel | json }}
+
     <div class="form-group">
       <label>Name :</label>
-      <input type="text" class="form-control" />
+      <input
+        type="text"
+        pattern="^([A-Z][a-z]+)+$"
+        [(ngModel)]="registerModel.name"
+        name="name"
+        class="form-control"
+        required
+        [class.invalid]="name.invalid && name.touched"
+        [class.valid]="name.valid && name.untouched"
+        #name="ngModel"
+        id="userName"
+      />
+      <div *ngIf="name.errors && name.touched">
+        <small class="text-danger" *ngIf="name.errors['required']"
+          >Name is Required</small
+        >
+        <small class="text-danger" *ngIf="name.errors['pattern']"
+          >Must Contain Capital & Small letters</small
+        >
+      </div>
     </div>
 
     <div class="form-group">
       <label>Email :</label>
-      <input type="email" class="form-control" />
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="registerModel.email"
+        #email="ngModel"
+        name="txtEmail"
+        ngModel
+        required
+        [class.invalid]="email.invalid && email.touched"
+        [class.valid]="email.valid && email.touched"
+        pattern="^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$"
+      />
+      <div *ngIf="email.errors && email.touched">
+        <small class="text-danger" *ngIf="email.errors['required']"
+          >Email is required</small
+        >
+        <small class="text-danger" *ngIf="email.errors['pattern']">
+          Email must Contain @ and .
+        </small>
+      </div>
     </div>
+
     <div class="mb-3">
       <label for="password" class="form-label">Password :</label>
-      <input type="password" class="form-control" id="password" />
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        [(ngModel)]="registerModel.password"
+        #pass="ngModel"
+        name="txtPass"
+        ngModel
+      />
+      <div *ngIf="pass.errors && pass.touched">
+        <small class="text-danger" *ngIf="pass.errors['required']"
+          >Please select option</small
+        >
+      </div>
     </div>
     <div class="mb-3">
-      <label for="confirmpassword" class="form-label">Confirm Password :</label>
-      <input type="password" class="form-control" id="confirmpassword" />
+      <label for="confirmpassword" class="form-label">Confirm Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="confirmpassword"
+        [(ngModel)]="registerModel.confirmpassword"
+        #conf="ngModel"
+        name="txtConf"
+        ngModel
+        required
+        [class.invalid]="conf.invalid && conf.touched"
+      />
       <div class="form-text confirm-message"></div>
+      <div *ngIf="conf.errors && conf.touched">
+        <small class="text-danger" *ngIf="conf.errors['required']"
+          >confirm password is required</small
+        >
+      </div>
     </div>
     <br />
-    <button type="button" class="btn btn-secondary">Register Button</button>
+    <div class="form-group">
+      <select
+        class="custom-select"
+        [(ngModel)]="registerModel.topic"
+        #select="ngModel"
+        name="select"
+        ngModel
+        required
+        [class.invalid]="select.invalid && select.touched"
+      >
+        <option selected>Please select option</option>
+        <option *ngFor="let topic of topics">{{ topic }}</option>
+      </select>
+    </div>
+    <div *ngIf="select.errors && select.touched">
+      <small class="text-danger" *ngIf="select.errors['required']"
+        >Please select option</small
+      >
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-secondary"
+      [disabled]="userForm.form.invalid || pass.value != conf.value"
+    >
+      Submit
+    </button>
   </form>
 </div>

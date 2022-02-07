@@ -1,14 +1,54 @@
 <div class="“container-fluid”">
-  <form>
+  <form #userForm="ngForm" novalidate (ngSubmit)="onSubmitt()">
     <div class="form-group">
       <label>Email :</label>
-      <input type="email" class="form-control" />
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="loginModel.email"
+        #email="ngModel"
+        name="txtEmail"
+        ngModel
+        required
+        [class.invalid]="email.invalid && email.touched"
+        [class.valid]="email.valid && email.touched"
+        pattern="^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$"
+      />
+      <div *ngIf="email.errors && email.touched">
+        <small class="text-danger" *ngIf="email.errors['required']"
+          >Email is required</small
+        >
+        <small class="text-danger" *ngIf="email.errors['pattern']">
+          Email must Contain @ and .
+        </small>
+      </div>
     </div>
+
     <div class="mb-3">
       <label for="password" class="form-label">Password :</label>
-      <input type="password" class="form-control" id="password" />
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        [(ngModel)]="loginModel.password"
+        #pass="ngModel"
+        name="txtPass"
+        ngModel
+        [class.invalid]="pass.invalid && pass.touched"
+      />
+      <div *ngIf="pass.errors && pass.touched">
+        <small class="text-danger" *ngIf="pass.errors['required']">
+          Password is required
+        </small>
+      </div>
     </div>
     <br />
-    <button type="button" class="btn btn-secondary">Login Button</button>
+    <button
+      type="submit"
+      class="btn btn-secondary"
+      [disabled]="userForm.form.invalid"
+    >
+      Login Button
+    </button>
   </form>
 </div>

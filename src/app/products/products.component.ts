@@ -52,6 +52,7 @@ export class ProductsComponent implements OnInit {
   }
   dataUserEntered = 'defult data';
   img: string = '';
+
   ngOnInit(): void {}
 
   goToDiscount() {

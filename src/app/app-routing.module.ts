@@ -13,8 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/Header', pathMatch: 'full' },
-  // { path: 'Header', component: HeaderComponent },
+  { path: '', redirectTo: '/Header', pathMatch: 'full' },
   { path: 'Header', component: HomeComponent },
   {
     path: 'Products',
@@ -24,6 +23,7 @@ const routes: Routes = [
       { path: 'nodiscount', component: NoDiscountComponent },
     ],
   },
+
   { path: 'Users', component: UsersComponent },
   { path: 'Postes', component: PostsComponent },
   { path: 'comments/:id', component: CommentsComponent },
