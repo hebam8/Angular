@@ -4,3 +4,12 @@
 .valid {
   border-color: green;
 }
+
+.container-fluid{
+  margin: 5vh;
+  display: flex;
+  justify-content: center;
+  form{
+    width: 40vh;
+  }
+}

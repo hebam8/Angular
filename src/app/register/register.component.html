@@ -1,8 +1,110 @@
-<div class="“container-fluid”">
-  <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
-    <!-- {{ userForm.value | json }}
+
+<div class="container-fluid"> 
+   <div class="row">
+      <div class="col-md-12"> 
+        <form #userForm="ngForm" [formGroup]="registrationForm">
+        <div class="form-group">
+        <label>Name :</label>
+        <input [class.invalid]="userName?.invalid && userName?.touched" formControlName="userName" type="text" class="form-control" id="userName"
+         
+      />
+      <div *ngIf="userName?.invalid && userName?.touched">
+        <small class="text-danger" *ngIf="userName?.errors?.['required']">User name is required</small>
+        <small class="text-danger" *ngIf="userName?.errors?.['minlength']">User name is must be at least 3  charaters</small>
+        <small class="text-danger" *ngIf="userName?.errors?.['forbiddenName']">{{userName?.errors?.['forbiddenName'].value}} is not allowed</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email:</label>
+      <input formControlName="email" type="email" class="form-control" [class.invalid]="email?.invalid && email?.touched" />
+      <div *ngIf="email?.invalid && email?.touched">
+        <small class="text-danger" *ngIf="email?.errors?.['required']">Email is required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password :</label>
+      <input  formControlName="password" type="password" class="form-control" id="password"/>
+    </div>
+    <div class="mb-3">
+      <label for="confirmpassword" class="form-label">Confirm Password:</label>
+      <input formControlName="confirmPassword" type="password"  class="form-control" id="confirmpassword"/>
+     </div> 
+     <small class="text-danger" *ngIf="registrationForm?.errors?.['misMatch']">Password and confirmpassword is not match </small>
     <br />
-    {{ registerModel | json }} -->
+
+     <div class="form-group">
+      <select
+        class="custom-select"
+        formControlName="topics"
+        [class.invalid]="topicss?.invalid && topicss?.touched">
+        <option selected>Please select option</option>
+        <option *ngFor="let topic of topics">{{ topic }}</option>
+        </select>
+    </div>
+    <div *ngIf="topicss?.invalid && topicss?.touched">
+      <small class="text-danger" *ngIf="topicss?.errors?.['required']">select is required</small>
+    </div>
+
+    <div class="form-group">
+      <label>Number of discount</label>
+      <input  type="text" formControlName="number" class="form-control" [class.invalid]="number?.invalid && number?.touched">
+  </div>
+  <small class="text-danger" *ngIf="number?.errors?.['required']">write discount value in percent</small>
+
+    <div class="form-check mb-3">
+      <input (click)="setNumberValidation()" type="checkbox" formControlName="subscribe" class="form-check-input"  >
+      <label  class="form-check-label">Does this product containd discount </label>
+  </div>
+<br><br>
+  <div formArrayName="alternativeComment" *ngFor="let ecomment of alternativeComment?.controls; let i=index">
+    <label>{{" Alternative comment #"}} {{i+1}}</label>
+    <input type="text" [formControlName]="i" class="form-control">
+  </div>
+<br>
+
+  <button class="btn btn-success" (click)="addAlternativeComment()">Add alternative Comment</button>
+  <br><br>
+    <button type="submit" class="btn btn-secondary">Submit</button>
+    <br> 
+    <br>
+    <button (click)="loadAPIData()">Get Data</button>
+ </form>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="“container-fluid”">
+  <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+    {{ userForm.value | json }}
+    <br />
+    {{ registerModel | json }}
 
     <div class="form-group">
       <label>Name :</label>
@@ -121,4 +223,4 @@
       Submit
     </button>
   </form>
-</div>
+</div> -->

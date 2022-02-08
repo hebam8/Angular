@@ -16,7 +16,7 @@ app.post("/enroll", function (req, res) {
 });
 app.post("/login", function (req, res) {
   console.log(req.body);
-  res.status(200).send("welcome");
+  res.status(200).send( {welcome: "welcome"});
 });
 
 app.listen(PORT, function () {
