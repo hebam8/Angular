@@ -1,8 +1,8 @@
 <div class="“container-fluid”">
   <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
-    {{ userForm.value | json }}
+    <!-- {{ userForm.value | json }}
     <br />
-    {{ registerModel | json }}
+    {{ registerModel | json }} -->
 
     <div class="form-group">
       <label>Name :</label>
@@ -56,12 +56,15 @@
       <label for="password" class="form-label">Password :</label>
       <input
         type="password"
+        required
         class="form-control"
         id="password"
         [(ngModel)]="registerModel.password"
         #pass="ngModel"
         name="txtPass"
         ngModel
+        [class.invalid]="pass.invalid && pass.touched"
+        
       />
       <div *ngIf="pass.errors && pass.touched">
         <small class="text-danger" *ngIf="pass.errors['required']"
