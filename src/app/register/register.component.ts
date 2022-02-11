@@ -17,11 +17,10 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     console.log(this.registerModel);
-    this.enrollment.enroll(this.registerModel).subscribe(
-      (res) => {
+    this.enrollment.enroll(this.registerModel).subscribe(res=> {
         console.log('success', res);
       },
-      (error) => {
+      error => {
         console.log('error', error);
       }
     );
